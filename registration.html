@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARSH DADA KHARAT - THE MOB BOSS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&family=Martel:wght@900&display=swap');
+
+        :root {
+            --gold: #ffd700;
+            --dark-gold: #b8860b;
+            --red: #ff0000;
+            --ultra-glow: #fffb00;
+        }
+
+        body {
+            margin: 0;
+            background: #000;
+            color: white;
+            font-family: 'Poppins', 'Martel', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* Initial Screen Button */
+        #launchBtn {
+            padding: 25px 50px;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #cc0000, #ff4500);
+            border: 4px solid #fff;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 40px rgba(204, 0, 0, 0.6);
+            z-index: 100;
+            font-weight: 900;
+            text-transform: uppercase;
+            animation: pulseBtn 1.5s infinite;
+        }
+
+        @keyframes pulseBtn {
+            0% { transform: scale(1); box-shadow: 0 0 30px rgba(204, 0, 0, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 60px rgba(255, 69, 0, 1); }
+            100% { transform: scale(1); box-shadow: 0 0 30px rgba(204, 0, 0, 0.5); }
+        }
+
+        /* The Main Stage (Hidden) */
+        #stage {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Lightning effect */
+        .lightning {
+            position: absolute; width: 100%; height: 100%;
+            background: radial-gradient(circle, #2a0040 0%, #000 80%);
+            animation: flash 0.3s infinite alternate;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        @keyframes flash { from { opacity: 0.1; } to { opacity: 0.3; } }
+
+        /* The Photo with "Sarcastic" Extreme Glow */
+        .photo-frame {
+            position: relative;
+            width: 70vw; 
+            max-width: 320px; 
+            height: 70vw; 
+            max-height: 320px; 
+            border: 8px solid var(--gold);
+            border-radius: 15px;
+            z-index: 5;
+            /* Multi-layered shadow for that radioactive look */
+            box-shadow: 
+                0 0 20px #fff,
+                0 0 40px var(--gold),
+                0 0 60px var(--red),
+                0 0 80px var(--gold);
+            animation: 
+                slamIn 0.6s cubic-bezier(0.17, 0.89, 0.32, 1.49) forwards, 
+                beat 0.5s infinite alternate,
+                hyperGlow 1s infinite alternate;
+        }
+
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+
+        @keyframes hyperGlow {
+            from { box-shadow: 0 0 20px #fff, 0 0 40px var(--gold), 0 0 60px var(--red); }
+            to { box-shadow: 0 0 40px #fff, 0 0 70px var(--ultra-glow), 0 0 100px var(--red), 0 0 150px var(--gold); }
+        }
+
+        @keyframes slamIn {
+            0% { transform: scale(4); opacity: 0; filter: blur(15px); }
+            100% { transform: scale(1); opacity: 1; filter: blur(0); }
+        }
+
+        @keyframes beat { from { transform: scale(1); } to { transform: scale(1.05); } }
+
+        /* Mobile Responsive Marathi Tags */
+        .tag {
+            position: absolute;
+            padding: 8px 12px;
+            font-weight: 900;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-shadow: 5px 5px 0 #000;
+            white-space: nowrap;
+            z-index: 6;
+        }
+
+        @media (max-width: 600px) {
+            .tag { position: relative; display: block; margin: 10px auto; width: fit-content; top: auto; left: auto; right: auto; bottom: auto; font-size: 0.9rem; }
+            .photo-frame { margin-bottom: 20px; }
+        }
+
+        @media (min-width: 601px) {
+            .tag-1 { top: -40px; left: -60px; background: #ffff00; color: #000; animation: float 1.8s infinite alternate ease-in-out; }
+            .tag-2 { bottom: 30px; right: -100px; background: #00ff00; color: #000; animation: float 2.2s infinite alternate ease-in-out; }
+            .tag-3 { top: 100px; left: -140px; background: #ff00ff; color: #fff; animation: float 2.5s infinite alternate ease-in-out; }
+        }
+
+        @keyframes float { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+
+        /* Text Section */
+        .text-container { margin-top: 25px; z-index: 10; width: 100%; }
+        
+        .wish {
+            font-size: 1.6rem; color: #fff; margin: 0;
+            text-shadow: 0 0 10px var(--red);
+        }
+
+        .main-name {
+            font-size: 3rem;
+            background: linear-gradient(to bottom, #fff 20%, var(--gold) 50%, var(--dark-gold) 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 5px 0 0 0;
+            filter: drop-shadow(0 3px 10px rgba(255, 215, 0, 0.5));
+            animation: nameGrow 0.5s infinite alternate;
+        }
+
+        @media (max-width: 600px) { .wish { font-size: 1.2rem; } .main-name { font-size: 2.2rem; } }
+
+        @keyframes nameGrow { from { transform: scale(1); } to { transform: scale(1.02); } }
+
+        /* Emoji Rain */
+        .emoji-rain {
+            position: absolute; font-size: 2.2rem; pointer-events: none;
+            animation: fall 2.5s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Hidden Audio Player */
+        #birthdaySong { display: none; }
+    </style>
+</head>
+<body>
+
+    <button id="launchBtn" onclick="activateLegend()">CLICK FOR DHAMAKA 💥</button>
+
+    <div id="stage">
+        <div class="lightning"></div>
+        
+        <audio id="birthdaySong" loop>
+            <source src="naad.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div class="photo-frame">
+            <img src="https://img.sanishtech.com/u/5d885c3d397daa8305b160fa90667b93.jpg" alt="Harsh Dada Kharat">
+            
+            <div class="tag tag-1">फलटणचे कृषी मंत्री 🚜</div>
+            <div class="tag tag-2">Squad चे AWM King 🎯</div>
+            <div class="tag tag-3">पोरींच्या दिलाचे राजे 👑</div>
+        </div>
+
+        <div class="text-container">
+            <p class="wish">वाढदिवसाच्या हार्दिक शुभेच्छा!</p>
+            <h1 class="main-name">हर्ष दादा खरात</h1>
+        </div>
+    </div>
+
+    <script>
+        function activateLegend() {
+            document.getElementById('launchBtn').style.display = 'none';
+            document.getElementById('stage').style.display = 'flex';
+
+            const song = document.getElementById('birthdaySong');
+            song.play().catch(error => {
+                console.log("Audio play failed.", error);
+            });
+
+            setInterval(() => {
+                const emojis = ['👑', '🔥', '🔫', '🚜', '🎂', '💸', '🦁'];
+                const e = document.createElement('div');
+                e.className = 'emoji-rain';
+                e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                e.style.left = Math.random() * 100 + 'vw';
+                e.style.top = '-50px';
+                document.body.appendChild(e);
+                setTimeout(() => e.remove(), 2500);
+            }, 180);
+        }
+    </script>
+</body>
+</html>
